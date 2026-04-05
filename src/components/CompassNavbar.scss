@@ -1,0 +1,131 @@
+// src/components/CompassNavbar.scss
+
+// 定義世界觀的色彩常數
+$abyss-bg: rgba(12, 16, 24, 0.85); // 深淵背景
+$neon-cyan: #00f3ff; // 探索者之光
+$text-muted: #8b9bb4; // 沉睡的文字
+$text-bright: #ffffff; // 覺醒的文字
+
+.seeker-navbar {
+  background-color: $abyss-bg;
+  backdrop-filter: blur(12px); // 毛玻璃效果，透出背後世界的輪廓
+  border-bottom: 1px solid rgba($neon-cyan, 0.15);
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+
+  // 系統真名樣式
+  .seeker-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-decoration: none;
+    position: relative;
+
+    .brand-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: $text-bright;
+      letter-spacing: 4px;
+      text-shadow: 0 0 8px rgba($neon-cyan, 0.4);
+    }
+
+    .brand-subtitle {
+      font-size: 0.7rem;
+      color: $neon-cyan;
+      letter-spacing: 6px;
+      font-family: "Courier New", Courier, monospace; // 帶點終端機的科技感
+      opacity: 0.8;
+    }
+
+    &:hover {
+      .brand-title {
+        text-shadow:
+          0 0 12px rgba($neon-cyan, 0.8),
+          0 0 24px rgba($neon-cyan, 0.4);
+      }
+    }
+  }
+
+  // 導航座標點樣式
+  .seeker-nav-link {
+    position: relative;
+    color: $text-muted;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    margin: 0 12px;
+    padding: 8px 16px;
+    overflow: hidden;
+    transition: color 0.4s ease;
+
+    .link-text {
+      position: relative;
+      z-index: 2;
+    }
+
+    // 沉睡的霓虹底線
+    .neon-underline {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background-color: $neon-cyan;
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      transform: translateX(-50%);
+      box-shadow:
+        0 0 10px $neon-cyan,
+        0 0 20px $neon-cyan;
+      z-index: 1;
+    }
+
+    // 當游標（觀測者的視線）觸及時的覺醒狀態
+    &:hover,
+    &:focus {
+      color: $text-bright;
+      text-shadow: 0 0 8px rgba($neon-cyan, 0.6);
+
+      .neon-underline {
+        width: 100%; // 底線展開
+      }
+    }
+  }
+
+  // 漢堡選單的客製化（針對手機版冒險者）
+  .seeker-toggler {
+    border: 1px solid rgba($neon-cyan, 0.3);
+    outline: none;
+    box-shadow: none;
+
+    &:focus {
+      box-shadow: 0 0 10px rgba($neon-cyan, 0.5);
+    }
+
+    .toggler-icon {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background-color: $neon-cyan;
+      position: relative;
+      transition: all 0.3s;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        width: 24px;
+        height: 2px;
+        background-color: $neon-cyan;
+        left: 0;
+        transition: all 0.3s;
+      }
+
+      &::before {
+        top: -8px;
+      }
+      &::after {
+        top: 8px;
+      }
+    }
+  }
+}

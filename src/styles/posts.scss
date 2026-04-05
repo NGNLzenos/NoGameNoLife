@@ -1,0 +1,123 @@
+// src/styles/posts.scss
+
+// 定義世界觀色彩
+$neon-cyan: #00f3ff;
+$neon-pink: #ff0055;
+$gold-warning: #ffb000;
+$text-main: #c8d4e3;
+$text-muted: #8b9bb4;
+$bg-dark: rgba(10, 13, 20, 0.8);
+
+// 這是文章內容的專屬結界
+.seeker-article-content {
+  color: $text-main;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+
+  // 段落
+  p {
+    margin-bottom: 1.5rem;
+  }
+
+  // 標題系統 (H2, H3, H4)
+  h2,
+  h3,
+  h4 {
+    color: #ffffff;
+    margin-top: 2.5rem;
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    border-bottom: 1px solid rgba($neon-cyan, 0.3);
+    padding-bottom: 0.5rem;
+    text-shadow: 0 0 8px rgba($neon-cyan, 0.4);
+
+    // 標題前方的裝飾符號
+    &::before {
+      content: ">";
+      color: $neon-cyan;
+      margin-right: 10px;
+      font-family: "Courier New", Courier, monospace;
+    }
+  }
+
+  h3 {
+    font-size: 1.4rem;
+    color: $neon-cyan;
+  }
+
+  // 引用區塊 (虛擬框效果)
+  blockquote {
+    background: linear-gradient(
+      90deg,
+      rgba($neon-cyan, 0.1) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    border-left: 4px solid $neon-cyan;
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: lighten($text-muted, 10%);
+    position: relative;
+
+    // 裝飾性的角落標記
+    &::after {
+      content: "[ SYSTEM QUOTE ]";
+      position: absolute;
+      top: -10px;
+      right: 10px;
+      font-size: 0.7rem;
+      color: $neon-cyan;
+      font-family: "Courier New", Courier, monospace;
+      font-style: normal;
+      background-color: #0a0d14;
+      padding: 0 5px;
+    }
+  }
+
+  // 行內程式碼 (裝備/技能名稱)
+  code {
+    background-color: rgba($neon-pink, 0.15);
+    color: #ff6699;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Courier New", Courier, monospace;
+    border: 1px solid rgba($neon-pink, 0.3);
+    font-size: 0.95em;
+  }
+
+  // 列表 (任務獎勵/清單)
+  ul {
+    list-style: none;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    li {
+      position: relative;
+      margin-bottom: 0.5rem;
+
+      // 自訂發光方形的 Bullet Point
+      &::before {
+        content: "";
+        position: absolute;
+        left: -1.5rem;
+        top: 0.6rem;
+        width: 8px;
+        height: 8px;
+        background-color: $gold-warning;
+        box-shadow: 0 0 5px $gold-warning;
+        transform: rotate(45deg); // 轉成菱形
+      }
+    }
+  }
+
+  // 強調文字
+  strong {
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+}

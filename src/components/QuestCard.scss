@@ -1,0 +1,65 @@
+// src/components/QuestCard.scss
+$neon-cyan: #00f3ff;
+$card-bg: rgba(16, 22, 34, 0.8);
+
+.quest-card {
+  background-color: $card-bg;
+  border: 1px solid rgba($neon-cyan, 0.2);
+  border-radius: 8px;
+  padding: 20px;
+  height: 100%;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+
+  .quest-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px dashed rgba($neon-cyan, 0.3);
+    padding-bottom: 10px;
+
+    .quest-type {
+      font-size: 0.8rem;
+      color: #ffb000;
+      border: 1px solid #ffb000;
+      padding: 2px 8px;
+      border-radius: 4px;
+      letter-spacing: 1px;
+    }
+    .quest-date {
+      font-size: 0.8rem;
+      color: #8b9bb4;
+      font-family: "Courier New", Courier, monospace;
+    }
+  }
+
+  .quest-title {
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+  }
+
+  .quest-summary {
+    color: #8b9bb4;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: $neon-cyan;
+    box-shadow:
+      0 8px 20px rgba($neon-cyan, 0.15),
+      inset 0 0 15px rgba($neon-cyan, 0.05);
+
+    .quest-title {
+      color: $neon-cyan;
+      text-shadow: 0 0 8px rgba($neon-cyan, 0.5);
+    }
+  }
+}
