@@ -1,0 +1,125 @@
+// src/pages/Home.scss
+
+.portal-grid {
+  margin-top: 2rem;
+}
+
+.portal-card {
+  position: relative;
+  display: block;
+  height: 220px; // 區塊高度
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  // 背景圖片圖層
+  .portal-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition:
+      transform 0.6s ease,
+      filter 0.4s ease;
+    z-index: 1;
+    // 初始狀態：保留大部分色彩(僅15%灰階)，亮度維持75%，讓原圖細節透出來
+    filter: grayscale(15%) brightness(0.75);
+  }
+
+  // 漸層遮罩圖層 (確保文字清晰可見)
+  .portal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    // 初始狀態：底部夠暗(0.9)以襯托文字，上方較透明(0.1)展現圖片
+    background: linear-gradient(
+      to top,
+      rgba(10, 13, 20, 0.9) 0%,
+      rgba(10, 13, 20, 0.1) 100%
+    );
+    z-index: 2;
+    transition: background 0.4s ease;
+  }
+
+  // 文字內容圖層
+  .portal-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px;
+    z-index: 3;
+
+    .portal-title {
+      color: #ffffff;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+      transition: all 0.3s ease;
+    }
+
+    .portal-desc {
+      color: #8b9bb4;
+      font-size: 0.95rem;
+      margin-bottom: 0;
+      opacity: 0; // 預設隱藏描述
+      transform: translateY(15px);
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+  }
+
+  // 游標懸停時的覺醒狀態！
+  &:hover {
+    // 讀取 React 傳入的專屬顏色變數
+    border-color: var(--hover-color);
+    box-shadow:
+      0 0 20px rgba(0, 0, 0, 0.5),
+      inset 0 0 20px var(--hover-color-alpha);
+    transform: translateY(-5px);
+
+    .portal-bg {
+      transform: scale(1.05); // 圖片微微放大
+      // 覺醒狀態：完全解除灰階(0%)，並將亮度推到 110% (1.1)，產生「通電發亮」的感覺
+      filter: grayscale(0%) brightness(1.1);
+    }
+
+    .portal-overlay {
+      // Hover 時讓遮罩退得更開，展現圖片全貌
+      background: linear-gradient(
+        to top,
+        rgba(10, 13, 20, 0.8) 0%,
+        rgba(10, 13, 20, 0) 100%
+      );
+    }
+
+    .portal-content {
+      .portal-title {
+        color: var(--hover-color);
+        text-shadow: 0 0 15px var(--hover-color-alpha);
+      }
+      .portal-desc {
+        opacity: 1; // 顯示描述
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+// 針對手機版的微調
+@media (max-width: 768px) {
+  .portal-card {
+    height: 180px;
+    .portal-content .portal-desc {
+      opacity: 1; // 手機版沒有 hover，直接顯示描述
+      transform: translateY(0);
+    }
+  }
+}

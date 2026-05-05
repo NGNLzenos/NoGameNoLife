@@ -1,0 +1,164 @@
+// src/pages/AboutMe.scss
+
+$neon-cyan: #00f3ff;
+$neon-pink: #ff0055;
+$gold-warning: #ffb000;
+$bg-panel: rgba(16, 22, 34, 0.7);
+
+.status-board {
+  margin-top: 2rem;
+
+  // 左側：角色投影區塊
+  .avatar-section {
+    background: $bg-panel;
+    border: 1px solid rgba($neon-cyan, 0.3);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+
+    .avatar-frame {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      border: 2px dashed $neon-cyan;
+      padding: 5px;
+      position: relative;
+      animation: spin-frame 20s linear infinite;
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        animation: counter-spin 20s linear infinite; // 讓圖片保持正向
+      }
+    }
+
+    .base-stats {
+      text-align: left;
+      margin-top: 30px;
+      font-family: "Courier New", Courier, monospace;
+      color: #8b9bb4;
+
+      .stat-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding-bottom: 5px;
+
+        .stat-value {
+          color: $neon-cyan;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  // 右側：天賦標籤區塊
+  .talent-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .talent-card {
+      background: $bg-panel;
+      border-left: 4px solid;
+      border-radius: 0 8px 8px 0;
+      padding: 25px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.05);
+        transform: translateX(10px);
+      }
+
+      .talent-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+
+        .talent-icon {
+          font-size: 1.5rem;
+          margin-right: 15px;
+        }
+
+        h3 {
+          margin: 0;
+          font-size: 1.4rem;
+          color: #ffffff;
+          letter-spacing: 1px;
+        }
+      }
+
+      p {
+        color: #c8d4e3;
+        line-height: 1.7;
+        margin-bottom: 0;
+        font-size: 1.05rem;
+      }
+
+      // 技能進度條 (用於展示前25%的概念)
+      .skill-stack {
+        margin-top: 20px;
+
+        .skill-item {
+          margin-bottom: 10px;
+
+          .skill-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #8b9bb4;
+            margin-bottom: 5px;
+          }
+
+          .progress {
+            height: 6px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 3px;
+
+            .progress-bar {
+              background-color: $gold-warning;
+              box-shadow: 0 0 8px $gold-warning;
+            }
+          }
+        }
+      }
+    }
+
+    // 為三個天賦設定專屬顏色
+    .talent-1 {
+      border-color: $neon-cyan;
+      .talent-icon {
+        color: $neon-cyan;
+      }
+    }
+    .talent-2 {
+      border-color: $neon-pink;
+      .talent-icon {
+        color: $neon-pink;
+      }
+    }
+    .talent-3 {
+      border-color: $gold-warning;
+      .talent-icon {
+        color: $gold-warning;
+      }
+    }
+  }
+}
+
+// 旋轉動畫
+@keyframes spin-frame {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes counter-spin {
+  100% {
+    transform: rotate(-360deg);
+  }
+}
