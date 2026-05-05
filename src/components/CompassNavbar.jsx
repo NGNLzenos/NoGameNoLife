@@ -15,10 +15,10 @@ const CompassNavbar = () => {
     <nav className="navbar navbar-expand-lg seeker-navbar fixed-top">
       <div className="container">
         {/* 系統的真名 */}
-        <a className="navbar-brand seeker-brand" href="/">
+        <Link className="navbar-brand seeker-brand" to="/">
           <span className="brand-title">森羅萬象</span>
           <span className="brand-subtitle">THE SEEKER</span>
-        </a>
+        </Link>
 
         {/* 響應式漢堡選單：當視窗縮小，羅盤將摺疊其型態 */}
         <button
@@ -38,11 +38,10 @@ const CompassNavbar = () => {
           <ul className="navbar-nav ms-auto">
             {navPoints.map((point) => (
               <li className="nav-item" key={point.id}>
-                <a className="nav-link seeker-nav-link" href={point.path}>
+                <Link className="nav-link seeker-nav-link" to={point.path}>
                   <span className="link-text">{point.label}</span>
-                  {/* 隱藏的霓虹底線，等待游標的喚醒 */}
                   <span className="neon-underline"></span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

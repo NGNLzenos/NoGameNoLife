@@ -25,7 +25,7 @@ const AboutMe = () => {
             <div className="avatar-frame">
               {/* 請在 public/img/ 放入你的頭像圖片，命名為 avatar.jpg */}
               <img
-                src="/img/avatar.jpg"
+                src={`${import.meta.env.BASE_URL}img/avatar.jpg`}
                 alt="觀測者頭像"
                 onError={(e) => {
                   e.target.src =

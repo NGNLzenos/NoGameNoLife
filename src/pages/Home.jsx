@@ -12,7 +12,7 @@ const Home = () => {
       subtitle: "[ 狀態面板 ]",
       desc: "觀測者的真名、屬性數值與裝備庫",
       path: "/status",
-      img: "/img/home-about.jpg", // 對應你放入 public/img 的圖片
+      img: `${import.meta.env.BASE_URL}img/home-about.jpg`, // 對應你放入 public/img 的圖片
       color: "#00f3ff", // 探索者之藍
       colorAlpha: "rgba(0, 243, 255, 0.3)",
     },
@@ -22,7 +22,7 @@ const Home = () => {
       subtitle: "[ 任務日誌 ]",
       desc: "現實伺服器中的生存軌跡與轉職紀錄",
       path: "/career-logs",
-      img: "/img/home-career.jpg",
+      img: `${import.meta.env.BASE_URL}img/home-career.jpg`,
       color: "#ffb000", // 警告與榮耀之金
       colorAlpha: "rgba(255, 176, 0, 0.3)",
     },
@@ -32,7 +32,7 @@ const Home = () => {
       subtitle: "[ 攻略密技 ]",
       desc: "將人生視為硬核 RPG 的通關法則",
       path: "/game-mindset",
-      img: "/img/home-strategy.jpg",
+      img: `${import.meta.env.BASE_URL}img/home-strategy.jpg`,
       color: "#b026ff", // 奧秘之紫
       colorAlpha: "rgba(176, 38, 255, 0.3)",
     },
@@ -42,7 +42,7 @@ const Home = () => {
       subtitle: "[ 言靈陣法 ]",
       desc: "代碼與節奏交織的押韻工坊",
       path: "/rap-lab",
-      img: "/img/home-rap.jpg",
+      img: `${import.meta.env.BASE_URL}img/home-rap.jpg`,
       color: "#ff0055", // 狂暴之粉紅
       colorAlpha: "rgba(255, 0, 85, 0.3)",
     },
