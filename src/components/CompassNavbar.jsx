@@ -1,6 +1,6 @@
-// src/components/CompassNavbar.jsx
 import React from "react";
-import "./CompassNavbar.scss"; // 引入魔力迴路
+import { Link } from "react-router-dom"; // 【關鍵修復】必須把 Link 召喚出來！
+import "./CompassNavbar.scss";
 
 const CompassNavbar = () => {
   // 更新後的座標點，融合了遊戲 UI 的語意
